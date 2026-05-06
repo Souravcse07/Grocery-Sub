@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #6366f1;
+}
+
+/* Global Dark Mode Color Swapping for Tailwind v4 */
+.dark {
+  /* Backgrounds */
+  --color-white: #1f2937;
+  --color-gray-50: #111827;
+  --color-gray-100: #374151;
+  --color-gray-200: #4b5563;
+  --color-gray-300: #6b7280;
+
+  /* Text & Borders */
+  --color-gray-900: #f9fafb;
+  --color-gray-800: #f3f4f6;
+  --color-gray-700: #e5e7eb;
+  --color-gray-600: #d1d5db;
+  --color-gray-500: #9ca3af;
+}
+
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+/* Google Translate hidden styles */
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+.skiptranslate iframe { display: none !important; }
+body { top: 0px !important; }
+.goog-logo-link { display: none !important; }
+.goog-te-gadget { display: none !important; }
+#google_translate_element { display: none !important; }
+.VIpgJd-ZVi9od-ORHb-OEVmcd { display: none !important; }

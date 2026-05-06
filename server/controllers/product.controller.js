@@ -9,7 +9,7 @@ const normalizeBodyKeys = (body = {}) => {
   return normalized;
 };
 
-exports.getProducts = async (req, res) => {
+exports.getProducts = async (req, res, next) => {
   try {
     const { category, season, inStock, q } = req.query;
     const filter = { isDeleted: false };
@@ -22,21 +22,21 @@ exports.getProducts = async (req, res) => {
     const products = await Product.find(filter).sort({ createdAt: -1 });
     res.json(products);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.getProductById = async (req, res) => {
+exports.getProductById = async (req, res, next) => {
   try {
     const product = await Product.findOne({ _id: req.params.id, isDeleted: false });
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json(product);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.createProduct = async (req, res) => {
+exports.createProduct = async (req, res, next) => {
   try {
     const payload = normalizeBodyKeys(req.body);
     const { name, category, pricePerUnit, unit, inStock, season, sustainabilityScore } = payload;
@@ -79,11 +79,11 @@ exports.createProduct = async (req, res) => {
 
     res.status(201).json(product);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.updateProduct = async (req, res) => {
+exports.updateProduct = async (req, res, next) => {
   try {
     const updates = normalizeBodyKeys(req.body);
     if (typeof updates.vendorInfo === 'string') {
@@ -99,11 +99,11 @@ exports.updateProduct = async (req, res) => {
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json(product);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.softDeleteProduct = async (req, res) => {
+exports.softDeleteProduct = async (req, res, next) => {
   try {
     const product = await Product.findOneAndUpdate(
       { _id: req.params.id, isDeleted: false },
@@ -114,6 +114,6 @@ exports.softDeleteProduct = async (req, res) => {
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json({ message: 'Product soft deleted successfully' });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    next(err);
   }
 };
