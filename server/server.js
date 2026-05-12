@@ -1,11 +1,10 @@
+require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
-
-const connectDB = require('./config/db');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -21,23 +20,24 @@ const startSlotGeneratorJob = require('./jobs/slotGenerator.job');
 const startSeasonAlertJob = require('./jobs/seasonAlert.job');
 
 // Connect DB
-const startServer = async () => {
-  try {
-    await connectDB();
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, '0.0.0.0', () => {
-      console.log(`✅ Server running on port ${PORT}`);
+const PORT = process.env.PORT || 5000;
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+   console.log("MongoDB Connected");
+
+   app.listen(PORT, () => {
+      console.log(`Server running on ${PORT}`);
       
       // Start CRON jobs after server is up and DB is connected
       startBillingJob();
       startSlotGeneratorJob();
       startSeasonAlertJob();
-    });
-  } catch (error) {
-    console.error('❌ Failed to start server:', error.message);
-    process.exit(1);
-  }
-};
+   });
+})
+.catch((err) => {
+   console.log("MongoDB Error:", err);
+});
 
 // Middleware
 app.use(helmet());
@@ -69,7 +69,7 @@ app.get('/api/ai/suggest-basket', (req, res) => {
 
 // Health check
 app.get('/', (req, res) => {
-  res.json({ message: '🌿 FreshBox API is running' });
+   res.send("Backend Running");
 });
 
 // 404 Catch-All
@@ -80,6 +80,4 @@ app.use((req, res, next) => {
 // Global Error Handler
 const errorHandler = require('./middleware/errorHandler');
 app.use(errorHandler);
-
-
-startServer();
+
