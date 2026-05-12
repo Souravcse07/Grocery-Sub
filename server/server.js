@@ -36,7 +36,8 @@ mongoose.connect(process.env.MONGO_URI)
    });
 })
 .catch((err) => {
-   console.log("MongoDB Error:", err);
+   console.error("MongoDB Connection Error:");
+   console.error(err);
 });
 
 // Middleware
@@ -80,4 +81,10 @@ app.use((req, res, next) => {
 // Global Error Handler
 const errorHandler = require('./middleware/errorHandler');
 app.use(errorHandler);
-
+
+process.on("uncaughtException", (err) => {
+    console.error("Uncaught Exception:", err);
+});
+process.on("unhandledRejection", (err) => {
+    console.error("Unhandled Rejection:", err);
+});
