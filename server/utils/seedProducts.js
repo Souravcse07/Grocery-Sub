@@ -29,7 +29,17 @@ const sampleProducts = [
   { name: 'Cold Pressed Sunflower Oil', category: 'Pantry', pricePerUnit: 230, unit: 'liter', season: 'All Season', inStock: true, sustainabilityScore: 64, vendorInfo: { vendorName: 'Golden Seeds', source: 'regional' } },
   { name: 'Basmati Rice', category: 'Pantry', pricePerUnit: 120, unit: 'kg', season: 'All Season', inStock: true, sustainabilityScore: 72, vendorInfo: { vendorName: 'Harvest Grains', source: 'regional' } },
   { name: 'Toor Dal', category: 'Pantry', pricePerUnit: 150, unit: 'kg', season: 'All Season', inStock: true, sustainabilityScore: 76, vendorInfo: { vendorName: 'Pulse Point', source: 'regional' } },
-  { name: 'Rock Salt', category: 'Pantry', pricePerUnit: 55, unit: 'kg', season: 'All Season', inStock: true, sustainabilityScore: 67, vendorInfo: { vendorName: 'Mineral Foods', source: 'regional' } }
+  { name: 'Rock Salt', category: 'Pantry', pricePerUnit: 55, unit: 'kg', season: 'All Season', inStock: true, sustainabilityScore: 67, vendorInfo: { vendorName: 'Mineral Foods', source: 'regional' } },
+
+  { name: 'Chicken Breast', category: 'Meat', pricePerUnit: 250, unit: 'kg', season: 'All Season', inStock: true, sustainabilityScore: 55, vendorInfo: { vendorName: 'Quality Meats', source: 'local' } },
+  { name: 'Fresh Salmon', category: 'Meat', pricePerUnit: 800, unit: 'kg', season: 'All Season', inStock: true, sustainabilityScore: 60, vendorInfo: { vendorName: 'Ocean Catch', source: 'imported' } },
+
+  { name: 'Orange Juice', category: 'Drinks', pricePerUnit: 120, unit: 'liter', season: 'All Season', inStock: true, sustainabilityScore: 70, vendorInfo: { vendorName: 'Citrus Farms', source: 'regional' } },
+  { name: 'Green Tea', category: 'Drinks', pricePerUnit: 150, unit: 'pack', season: 'All Season', inStock: true, sustainabilityScore: 85, vendorInfo: { vendorName: 'Mountain Leaves', source: 'imported' } },
+  { name: 'Pomegranate Juice', category: 'Drinks', pricePerUnit: 140, unit: 'liter', season: 'All Season', inStock: true, sustainabilityScore: 72, vendorInfo: { vendorName: 'Ruby Farms', source: 'regional' } },
+  { name: 'Watermelon Juice', category: 'Drinks', pricePerUnit: 90, unit: 'liter', season: 'Summer', inStock: true, sustainabilityScore: 80, vendorInfo: { vendorName: 'Melon Patch', source: 'local' } },
+  { name: 'Papaya Juice', category: 'Drinks', pricePerUnit: 100, unit: 'liter', season: 'All Season', inStock: true, sustainabilityScore: 75, vendorInfo: { vendorName: 'Tropic Harvest', source: 'local' } },
+  { name: 'Mixed Fruit Juice', category: 'Drinks', pricePerUnit: 110, unit: 'liter', season: 'All Season', inStock: true, sustainabilityScore: 78, vendorInfo: { vendorName: 'Orchard Fresh', source: 'regional' } }
 ];
 
 const seedProducts = async () => {
