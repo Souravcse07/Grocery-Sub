@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { logout } from '../../store/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: '/api',
+  baseUrl: 'https://grocery-sub.onrender.com/api',
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
     if (token) {
