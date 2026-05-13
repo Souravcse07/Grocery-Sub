@@ -112,7 +112,7 @@ To access the admin panel, you can use the built-in script to create a superadmi
 cd server
 node scripts/createAdmin.js
 ```
-*Default Credentials: `superadmin@grocery.com` / `superpassword123`*
+*Default Credentials: `superadmin@grocery.com` / `SuperAdmin`*
 
 ## 🌐 Deployment
 This project is configured for deployment on cloud platforms like **Render**. 
