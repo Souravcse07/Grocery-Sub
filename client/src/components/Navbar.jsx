@@ -245,6 +245,15 @@ export default function Navbar() {
                     >
                       <Settings className="w-4 h-4" /> Settings
                     </Link>
+                    {user?.role === 'admin' && (
+                      <Link 
+                        to="/admin" 
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700"
+                      >
+                        <UserIcon className="w-4 h-4" /> Admin Panel
+                      </Link>
+                    )}
                     <button 
                       onClick={handleLogout}
                       className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-red-50 text-left"
